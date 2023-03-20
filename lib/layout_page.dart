@@ -9,6 +9,25 @@ class Layout extends StatefulWidget {
 }
 
 class LayoutState extends State<Layout> {
+  Row criarRow(String texto) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 15),
+          padding: EdgeInsets.all(15),
+          // height: 50,
+          width: 350,
+          color: Colors.blueAccent,
+          child: Text(
+            texto,
+            style: TextStyle(color: Colors.white54, fontSize: 24),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,23 +108,45 @@ class LayoutState extends State<Layout> {
           ),
         ),
 
-        //? Corpo App
-        body: Center(
-          child: ElevatedButton(
-            child: Text("Mostrar SnackBar"),
-            onPressed: () {
-              final snackBar = SnackBar(
-                content: Text("fala, ola a snackBar aqui"),
-                duration: Duration(milliseconds: 2500),
-                behavior: SnackBarBehavior.floating,
-                action: SnackBarAction(
-                    label: "ok", onPressed: () {} //aqui vai o codigo de ação
-                    ),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
-          ),
+        body: Column(
+          children: [
+            criarRow("linha teste"),
+            criarRow("Segunda Linha"),
+            criarRow("terceira linha"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 15),
+                  width: 350,
+                  color: Colors.black87,
+                  padding: EdgeInsets.all(15),
+                  child: Text(
+                    "linha crida manualmente",
+                    style: TextStyle(color: Colors.white60, fontSize: 13),
+                  ),
+                )
+              ],
+            )
+          ],
         ),
+        //? Corpo App
+        // body: Center(
+        //   child: ElevatedButton(
+        //     child: Text("Mostrar SnackBar"),
+        //     onPressed: () {
+        //       final snackBar = SnackBar(
+        //         content: Text("fala, ola a snackBar aqui"),
+        //         duration: Duration(milliseconds: 2500),
+        //         behavior: SnackBarBehavior.floating,
+        //         action: SnackBarAction(
+        //             label: "ok", onPressed: () {} //aqui vai o codigo de ação
+        //             ),
+        //       );
+        //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        //     },
+        //   ),
+        // ),
 
         //? Barra de Ícones (inferior)
         bottomNavigationBar: BottomNavigationBar(
