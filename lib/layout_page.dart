@@ -127,7 +127,26 @@ class LayoutState extends State<Layout> {
                   ),
                 )
               ],
-            )
+            ),
+            Padding(padding: EdgeInsets.all(10)),
+            Center(
+              child: ElevatedButton(
+                child: Text("Mostrar SnackBar"),
+                onPressed: () {
+                  final snackBar = SnackBar(
+                    content: Text("fala, ola a snackBar aqui"),
+                    duration: Duration(milliseconds: 2500),
+                    behavior: SnackBarBehavior.floating,
+                    action: SnackBarAction(
+                        label: "ok",
+                        onPressed: () {} //aqui vai o codigo de ação
+                        ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+              ),
+            ),
+            criarRow("test"),
           ],
         ),
         //? Corpo App
